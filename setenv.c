@@ -8,7 +8,7 @@
 */
 int custom_setenv(const char *name, const char *value, int overwrite)
 {
-	char *var;
+	char *vars;
 
 	if (name == NULL || name[0] == '\0')
 	{
@@ -30,17 +30,17 @@ int custom_setenv(const char *name, const char *value, int overwrite)
 		fprintf(stderr, "setenv: Variable '%s' already exists\n", name);
 		return (-1);
 	}
-	var = malloc(strlen(name) + strlen(value) + 2);
-	if (var == NULL)
+	vars = malloc(strlen(name) + strlen(value) + 2);
+	if (vars == NULL)
 	{
 		perror("setenv");
 		return (-1);
 	}
-	sprintf(var, "%s=%s", name, value);
-	if (putenv(var) != 0)
+	sprintf(vars, "%s=%s", name, value);
+	if (putenv(vars) != 0)
 	{
 		perror("setenv");
-		free(var);
+		free(vars);
 		return (-1);
 	}
 	return (0);

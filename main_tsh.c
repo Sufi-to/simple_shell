@@ -91,10 +91,10 @@ void main_execution_loop(struct mainFunctionVariables *mFV, struct stat *buff)
 int main(void)
 {
 	struct stat buff;
-	struct mainFunctionVariables mFV;
+	struct mainFunctionVariables main_fun_var;
 
-	initialize_variables(&mFV, &buff);
-	main_execution_loop(&mFV, &buff);
+	initialize_variables(&main_fun_var, &buff);
+	main_execution_loop(&main_fun_var, &buff);
 
 	return (0);
 }
