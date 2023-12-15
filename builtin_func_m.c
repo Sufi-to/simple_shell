@@ -93,7 +93,7 @@ int exit_shell(char *arg)
 */
 int exit_shell_wrapper(void)
 {
-	return (exit_shell(NULL));
+	return (-1);
 }
 
 
