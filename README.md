@@ -6,4 +6,4 @@ $$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%
 ## Authors
 
 * **Tomas Teclehaimanot**(https://github.com/Sufi-to)
-* **Batsieba Yohanes**(https://github.com/batiseba)
+* **Batsieba Yohanes**(https://github.com/batsieba)

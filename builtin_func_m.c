@@ -6,7 +6,7 @@
 **/
 int builtin_execute(char **tokens)
 {
-	struct builtin_executeVariables bev;
+	struct builtin_executeVariables be_var;
 
 	built_s builtin[] = {
 		{"exit", exit_shell_wrapper},
@@ -18,15 +18,15 @@ int builtin_execute(char **tokens)
 	if (tokens[0] == NULL)
 		return (1);
 
-	bev.length = _stringlen(tokens[0]);
+	be_var.length = _stringlen(tokens[0]);
 
-	bev.num = shell_num_builtins(builtin);
-	for (bev.i = 0; bev.i < bev.num; bev.i++)
+	be_var.num = shell_num_builtins(builtin);
+	for (be_var.i = 0; be_var.i < be_var.num; be_var.i++)
 	{
-		if (_strcmp(tokens[0], builtin[bev.i].name, bev.length) == 0)
+		if (_strcmp(tokens[0], builtin[be_var.i].name, be_var.length) == 0)
 		{
-			bev.status = (builtin[bev.i].p)();
-			return (bev.status);
+			be_var.status = (builtin[be_var.i].p)();
+			return (be_var.status);
 		}
 	}
 	return (1);
@@ -40,13 +40,13 @@ int builtin_execute(char **tokens)
 
 int shell_num_builtins(built_s builtin[])
 {
-	unsigned int i;
+	unsigned int num;
 
-	i = 0;
-	while (builtin[i].name != NULL)
-		i++;
+	num = 0;
+	while (builtin[num].name != NULL)
+		num++;
 
-	return (i);
+	return (num);
 }
 /**
  * print_shell_env - prints environment
@@ -54,14 +54,14 @@ int shell_num_builtins(built_s builtin[])
  */
 int print_shell_env(void)
 {
-	unsigned int i;
+	unsigned int num;
 
-	i = 0;
-	while (environ[i] != NULL)
+	num = 0;
+	while (environ[num] != NULL)
 	{
-		write(STDOUT_FILENO, environ[i], _stringlen(environ[i]));
+		write(STDOUT_FILENO, environ[num], _stringlen(environ[num]));
 		write(STDOUT_FILENO, "\n", 1);
-		i++;
+		num++;
 	}
 	return (0);
 }
