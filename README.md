@@ -1,0 +1,9 @@
+Simple Shell Alx project
+$$$$$$$$$$$$$$$$$$$$$$$$$%%%%%%%%%%%%%%%%
+?????????????????????????||||||||||||||||||||||
+
+
+## Authors
+
+* **Tomas Teclehaimanot**(https://github.com/Sufi-to)
+* **Batsieba Yohanes**(https://github.com/batiseba)
