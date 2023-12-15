@@ -176,22 +176,30 @@ int execute_command(char *fullpath, char **tokens)
 
 	ecv.envp = environ;
 
-	ecv.child_pid = fork();
-	if (ecv.child_pid == -1)
+	if (access(fullpath, F_OK) == 0)
 	{
-		handle_errors(1);
+		ecv.child_pid = fork();
+		if (ecv.child_pid == -1)
+		{
+			handle_errors(1);
 
-		exit(EXIT_FAILURE);
-	}
-	if (ecv.child_pid == 0)
+			exit(EXIT_FAILURE);
+		}
+		if (ecv.child_pid == 0)
+		{
+			ecv.execve_status = execve(fullpath, tokens, ecv.envp);
+
+			if (ecv.execve_status == -1)
+				return (-1);
+		}
+		else
+			wait(&ecv.status);
+
+	}else
 	{
-		ecv.execve_status = execve(fullpath, tokens, ecv.envp);
-
-		if (ecv.execve_status == -1)
-			return (-1);
+		handle_errors(4);
 	}
-	else
-		wait(&ecv.status);
+
 
 	return (0);
 }
