@@ -2,7 +2,7 @@
 /**
 **builtin_execute - executes the built in functions
 **@tokens: arguments being passed
-**Return: tokens
+**Return: token num
 **/
 int builtin_execute(char **tokens)
 {
